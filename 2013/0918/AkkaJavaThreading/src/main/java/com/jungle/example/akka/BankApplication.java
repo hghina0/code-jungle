@@ -8,7 +8,7 @@ import com.jungle.example.akka.actor.TransactionProcessorActor;
 import com.jungle.example.akka.message.TransferMessage;
 
 public class BankApplication {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ActorSystem system = ActorSystem.create("bankSystem");
 
         ActorRef processor = system.actorOf(Props.create(TransactionProcessorActor.class),"processor");
@@ -19,6 +19,7 @@ public class BankApplication {
         processor.tell(new TransferMessage(bobAccount,aliceAccount,10),processor);
         processor.tell(new TransferMessage(aliceAccount,bobAccount,3),processor);
 
+        Thread.sleep(50);
         system.shutdown();
     }
 }

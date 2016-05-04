@@ -1,0 +1,42 @@
+*.class
+*.log
+
+# sbt specific
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+# SBT files
+project/project
+target
+
+# IntelliJ IDEA project files
+.idea
+.idea_modules
+*.iml
+out
+*.sc
+
+# Eclipse project files
+.classpath
+.project
+.settings
+
+# Application temp files
+logs
+
+# Misc
+.cache
+/sources/cms/atlassian-ide-plugin.xml
+*.orig
+*.bak
+
+#Ignoring the persistence files
+/sources/filecreator/persistence/*
+
+sources/filecreator/hi

@@ -1,0 +1,31 @@
+<configuration>
+    <property name="LOG_PATH" value="c:/www/logs" />
+    <property name="LOG_FMT" value ="%-5level %msg%n" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_FMT}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_ROLLER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/persistence.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/persistence.%d{yyyy-MM-dd}.log</fileNamePattern> <!-- daily roll-over -->
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_FMT}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="akka" level="INFO"/>
+    <logger name="reactivemongo.api.Cursor" level="DEBUG" />
+    <logger name="reactivemongo.api.Failover" level="OFF" />
+    <logger name="reactivemongo.core.actors.MongoDBSystem" level="OFF" />
+    <logger name="reactivemongo.core.actors.MonitorActor" level="OFF" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
